@@ -2,7 +2,8 @@
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
+    "target": "ES2021"
+,    "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
