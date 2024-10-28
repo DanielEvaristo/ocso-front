@@ -1,6 +1,5 @@
-
-const ManagersPage = () =>{
-    return null
-}
+const ManagersPage = () => {
+  return null;
+};
 
 export default ManagersPage;

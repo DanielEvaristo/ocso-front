@@ -1,10 +1,9 @@
 "use client";
-
 import { Location } from "@/entities";
 import { Select, SelectItem } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 
-export default function SelectLocation({
+export default function SelectLocations({
   locations,
   store,
 }: {
@@ -21,7 +20,7 @@ export default function SelectLocation({
       }}
       selectedKeys={store ? store : "0"}
       onChange={(e) => {
-        if (e.target.value === "0" || e.target.value === "") {
+        if (e?.target.value === "0" || e.target.value === "") {
           router.push("/dashboard");
         } else {
           router.push(`/dashboard?store=${e.target.value}`);

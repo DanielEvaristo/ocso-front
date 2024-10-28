@@ -1,5 +1,5 @@
-const EmployeesPage = ()=>{
-    return null
-}
+const EmployeesPage = () => {
+  return null;
+};
 
 export default EmployeesPage;

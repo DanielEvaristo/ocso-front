@@ -1,4 +1,3 @@
-
-export default function LoadingCount (){
-    return "Cargando tiendas";
+export default function LoadingCount() {
+  return "Cargando tiendas...";
 }
