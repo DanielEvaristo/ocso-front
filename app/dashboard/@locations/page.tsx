@@ -1,5 +1,4 @@
-import { API_URL, TOKEN_NAME } from "@/constants";
-import { cookies } from "next/headers";
+import { API_URL } from "@/constants";
 import SelectLocations from "./_components/SelectLocation";
 import LocationCard from "./_components/LocationCard";
 import FormNewLocation from "./_components/FormNewLocation";
