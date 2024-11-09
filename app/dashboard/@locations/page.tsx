@@ -6,6 +6,8 @@ import FormNewLocation from "./_components/FormNewLocation";
 import DeleteLocationButton from "./_components/DeleteLocationButton";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Location } from "@/entities";
+import UpdateLocation from "./_components/UpdateLocation";
+import FormUpdateLocation from "./_components/FormUpdateLocation";
 
 const LocationsPage = async ({
   searchParams,
@@ -15,6 +17,9 @@ const LocationsPage = async ({
   const response = await fetch(`${API_URL}/locations`, {
     headers: {
       ...authHeaders(),
+    },
+    next: {
+      tags: ["dashboard:locations "], 
     },
   });
   let data: Location []= await response.json();
@@ -43,6 +48,9 @@ const LocationsPage = async ({
           <FormNewLocation store={searchParams.store}></FormNewLocation>
         </div>
         <DeleteLocationButton store={searchParams.store}></DeleteLocationButton>
+        <UpdateLocation>
+          <FormUpdateLocation store={searchParams.store}/>
+        </UpdateLocation>
       </div>
     </div>
   );
