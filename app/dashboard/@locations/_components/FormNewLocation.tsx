@@ -32,17 +32,19 @@ export default async function FormNewLocation({
     >
       <h1 className="text-3xl text-white">Crear tienda</h1>
       <Input
+        required={true}
         label="Nombre"
         placeholder="Ocso Jurikiya"
         name="locationName"
       ></Input>
       <Input
+        required={true}
         label="Dirección"
         placeholder="Av De la Luz S/N"
         name="locationAddress"
       ></Input>
-      <Input label="Latitud" placeholder="-120" name="locationLat"></Input>
-      <Input label="Longitud" placeholder="20" name="locationLng"></Input>
+      <Input required={true} label="Latitud" placeholder="-120" name="locationLat"></Input>
+      <Input required={true} label="Longitud" placeholder="20" name="locationLng"></Input>
       <SelectManager
         managers={dataManagers}
         locations={dataLocations}
