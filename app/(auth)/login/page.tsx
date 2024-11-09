@@ -1,7 +1,6 @@
 "use client";
 import { API_URL } from "@/constants";
-import { Button, Input, Spinner } from "@nextui-org/react";
-import axios from "axios";
+import { Button, Input } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -10,7 +9,7 @@ import React, { useState } from "react";
 export default function LoginPage() {
   const [submitting, setSubmtting] = useState(false);
   const router = useRouter();
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: any) => {
     setSubmtting(true);
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -18,13 +17,12 @@ export default function LoginPage() {
     authData.userEmail = formData.get("userEmail");
     authData.userPassword = formData.get("userPassword");
     try {
-      const response = await axios.post(
+      const response = await fetch(
         `${API_URL}/auth/login`,
-        { ...authData },
-        {
-          withCredentials: true,
-        }
-      );
+        { 
+          method: "POST",
+          body: JSON.stringify(authData),
+          credentials: "include",});
       if (response.status === 201) router.push("/dashboard");
 
       setSubmtting(false);
