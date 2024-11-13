@@ -1,4 +1,3 @@
-
 const ManagersPage = async () => {
   return null;
 };

@@ -20,7 +20,8 @@ export default async function FormNewLocation({
   const dataManagers: Manager[] = await responseManagers.json();
   const responseLocations = await fetch(`${API_URL}/locations`, {
     method: "GET",
-    headers: { ...authHeaders() }
+    headers: { ...authHeaders() },
+    next: { tags: ["dashboard:locations"] },
   });
 
   const dataLocations: Location[] = await responseLocations.json();
@@ -36,7 +37,7 @@ export default async function FormNewLocation({
       action={updateWithStoreId}
       className="bg-orange-400 py-2 px-4 flex flex-col gap-6 w-full rounded-l"
     >
-      <h1 className="text-3xl text-white text-center">Crear tienda</h1>
+      <h1 className="text-3xl text-white">Crear tienda</h1>
       <Input
         required={true}
         defaultValue={foundLocation?.locationName}

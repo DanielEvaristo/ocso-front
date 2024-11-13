@@ -2,11 +2,11 @@ import { API_URL } from "@/constants";
 import SelectLocations from "./_components/SelectLocation";
 import LocationCard from "./_components/LocationCard";
 import FormNewLocation from "./_components/FormNewLocation";
+import FormUpdateLocation from "./_components/FormUpdateLocation";
 import DeleteLocationButton from "./_components/DeleteLocationButton";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Location } from "@/entities";
 import UpdateLocation from "./_components/UpdateLocation";
-import FormUpdateLocation from "./_components/FormUpdateLocation";
 
 const LocationsPage = async ({
   searchParams,
@@ -14,14 +14,11 @@ const LocationsPage = async ({
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
   const response = await fetch(`${API_URL}/locations`, {
-    headers: {
-      ...authHeaders(),
-    },
-    next: {
-      tags: ["dashboard:locations "], 
-    },
+    method: "GET",
+    headers: { ...authHeaders() },
+    next: { tags: ["dashboard:locations"] },
   });
-  let data: Location []= await response.json();
+  let data: Location[] = await response.json();
   data = [
     {
       locationId: 0,
@@ -47,9 +44,11 @@ const LocationsPage = async ({
           <FormNewLocation store={searchParams.store}></FormNewLocation>
         </div>
         <div className="flex flex-row flex-grow-0 gap-10 items-center">
-          <DeleteLocationButton store={searchParams.store}></DeleteLocationButton>
+          <DeleteLocationButton
+            store={searchParams.store}
+          ></DeleteLocationButton>
           <UpdateLocation store={searchParams.store}>
-            <FormUpdateLocation store={searchParams.store}/>
+            <FormUpdateLocation store={searchParams.store}></FormUpdateLocation>
           </UpdateLocation>
         </div>
       </div>

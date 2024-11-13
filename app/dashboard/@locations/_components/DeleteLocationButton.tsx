@@ -11,7 +11,7 @@ export default function DeleteLocationButton({
   return (
     <form action={deleteLocation} className="my-4">
       <Button type="submit" name="deleteValue" value={store} color="danger">
-        <LuTrash size="20" />
+        <LuTrash size={20}></LuTrash>
       </Button>
     </form>
   );

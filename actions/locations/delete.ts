@@ -1,5 +1,4 @@
 "use server";
-
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
 import { revalidateTag } from "next/cache";
@@ -13,5 +12,5 @@ export default async function deleteLocation(formData: FormData) {
     headers: { ...authHeaders() },
   });
   revalidateTag("dashboard:locations");
-  redirect(`/dashboard`);
+  redirect("/dashboard");
 }

@@ -11,10 +11,9 @@ export default async function LocationCard({
 }) {
   if (!store) return null;
   const response = await fetch(`${API_URL}/locations/${store}`, {
+    method: "GET",
     headers: { ...authHeaders() },
-    next:{
-      tags:['dashboard:locations', `dashboard:locations:${store}`]
-    }
+    next: { tags: ["dashboards:locations", `dashboard:locations:${store}`] },
   });
   const data: Location = await response.json();
   return (
@@ -26,7 +25,9 @@ export default async function LocationCard({
       <CardBody className="flex flex-col w-full items-center">
         <p className="w-full">
           Manager:{" "}
-          <Link href={{ pathname: `dashboard/managers/${data.manager?.managerId}` }}>
+          <Link
+            href={{ pathname: `dashboard/managers/${data.manager?.managerId}` }}
+          >
             <b> {data.manager?.managerFullName}</b>
           </Link>
         </p>
@@ -38,7 +39,7 @@ export default async function LocationCard({
           width="300"
           height="200"
           loading="lazy"
-          src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBdX7XWCoFOxP8N1z-nTEGz4v4mvrPvvFQ
+          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_API_KEY_MAPS}
             &q=${data.locationLatLng[0]},${data.locationLatLng[1]}`}
         ></iframe>
       </CardBody>

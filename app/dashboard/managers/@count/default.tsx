@@ -1,3 +1,3 @@
-export default function  DefaultPage (){
-    return "No content"
+export default function defaultPage() {
+  return "noContent";
 }
