@@ -3,14 +3,16 @@ import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 
 export default function ProviderCard ({provider}: {provider: Provider}){
     return (
-        <Card className="w-4/12">
+        <Card>
             <CardHeader>
                 {provider.providerName}
             </CardHeader>
             <Divider/>
             <CardBody>
-                <p>Correo electrónico: <b>{provider.providerEmail}</b></p>
-                <p>Número de teléfono: <b>{provider.providerPhoneNumber}</b></p>
+                <p>Correo electrónico:</p>
+                <b>{provider.providerEmail}</b>
+                <p>Número de teléfono:</p>
+                <b>{provider.providerPhoneNumber}</b>
                 {
                     provider.products? (
                         <p>Tiene <b>{provider.products.length} </b></p>
