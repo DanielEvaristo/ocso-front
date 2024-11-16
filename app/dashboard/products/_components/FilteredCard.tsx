@@ -8,6 +8,7 @@ import { Input, Select, SelectItem } from "@nextui-org/react";
 export default function FilteredCard({products,providers}:{products: Product[], providers: Provider[]}){
     const [filtered, setFiltered] = useState<string>("");
     const [provider, setProvider] = useState<string>();
+    const [show, setShow] = useState(false);
     const [productsList, setProductsList] = useState<Product[]>(products);
     useEffect(()=>{
         console.log(filtered)
@@ -19,6 +20,7 @@ export default function FilteredCard({products,providers}:{products: Product[], 
             }
         })
         setProductsList(filteredProducts);
+        setShow(true);
     },[filtered, provider])
     return(
         <div className="max-h-[90vh] min-h-[90vh] overflow-y-auto flex flex-col gap-8 border-r-orange-400 border-r-2 px-10 pt-10">
@@ -36,7 +38,7 @@ export default function FilteredCard({products,providers}:{products: Product[], 
             }}
             label="Nombre del producto"
             />
-            {productsList.map((product)=>{
+            {show && productsList.map((product)=>{
                 return (
                     <Link className="hover:scale-110 transition-transform" key={product.productId} href={{pathname:`/dashboard/products/${product.productId}`}}>
                         <ProductCard product={product}/>
