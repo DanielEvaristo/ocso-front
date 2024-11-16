@@ -1,8 +1,8 @@
 import { API_URL } from "@/constants"
-import ProductCard from "../_components/ProductCard"
 import { authHeaders } from "@/helpers/authHeaders"
 import { Product, Provider } from "@/entities"
 import UpdateProduct from "./_components/UpdateProduct"
+import DeleteProduct from "./_components/DeleteProduct"
 
 export default async function ProductPage({params}:{params:{
     id: string
@@ -24,12 +24,15 @@ export default async function ProductPage({params}:{params:{
     const providers: Provider[] = await responseProviders.json()
     return (
         <div className="w-full">
-            <div>
-                <h1>{product.productName}</h1>
-                <h1>{product.price}</h1>
-                <h1>{product.countSeal}</h1>
+            <div className="bg-orange-500">
+                <h1 className="w-full font-bold text-white text-center py-2 text-2xl">Nombre del producto: {product.productName}</h1>
+                <h2 className="text-xl font-bold text-white text-center">Precio: {product.price}</h2>
+                <h2 className="text-md font-bold text-white text-center py-2">Cant. de Sellos: {product.countSeal}</h2>
             </div>
-            <UpdateProduct product={product} providers={providers}/> 
+            <UpdateProduct product={product} providers={providers}/>
+            <div className="pl-10">
+                <DeleteProduct productId={product.productId}/>
+            </div>
         </div>
     )
 }

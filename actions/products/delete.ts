@@ -3,6 +3,7 @@
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
 import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function deleteProduct(productId:string, formData: FormData) {
 
@@ -11,5 +12,8 @@ export default async function deleteProduct(productId:string, formData: FormData
     headers: { ...authHeaders(),'content-type': 'application/json' },
   });
 
-  if (response.status === 200) revalidateTag("dashboard:product");
+  if (response.status === 200) {
+    revalidateTag("dashboard:product")
+    redirect("/dashboard/products")
+  }
 }

@@ -4,7 +4,7 @@ import { Card, CardHeader, Divider, CardBody } from "@nextui-org/react";
 import Link from "next/link";
 export default function ProductCard({product}: {product: Product}){
     return(
-        <Card className="flex max-w-[350px]">
+        <Card className="flex max-w-[350px] pb-10">
             <CardHeader>
                 {product.productName}
             </CardHeader>

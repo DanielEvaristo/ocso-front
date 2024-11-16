@@ -21,9 +21,9 @@ export default function FilteredCard({products,providers}:{products: Product[], 
         })
         setProductsList(filteredProducts);
         setShow(true);
-    },[filtered, provider])
+    },[filtered, provider, products])
     return(
-        <div className="max-h-[90vh] min-h-[90vh] overflow-y-auto flex flex-col gap-8 border-r-orange-400 border-r-2 px-10 pt-10">
+        <div className="max-h-[90vh] min-h-[90vh] overflow-y-auto flex flex-col gap-4 border-r-orange-400 border-r-2 px-10 pt-10">
             <Select label="Proveedor" onChange={(e)=>{
                 setProvider(e.target.value);
             }}>

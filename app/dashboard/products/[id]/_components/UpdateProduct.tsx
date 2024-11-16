@@ -2,6 +2,8 @@ import { Product, Provider } from "@/entities";
 import updateProduct from "@/actions/products/update";
 import { Button, Input } from "@nextui-org/react";
 import SelectProvider from "../../_components/SelectProvider";
+import DeleteProduct from "./DeleteProduct";
+import { LuCheck } from "react-icons/lu";
 
 export default function UpdateProduct({product, providers}:{product: Product, providers: Provider[]}){
     const {productId} = product
@@ -12,7 +14,9 @@ export default function UpdateProduct({product, providers}:{product: Product, pr
             <Input label="Precio" name="price" defaultValue={String(product.price)}/>
             <Input label="Num. de Sellos" name="countSeal" defaultValue={String(product.countSeal)}/>
             <SelectProvider providers={providers} defaultProvider={product.provider.providerId}/>
-            <Button color="primary" type="submit">Actualizar Producto</Button>
+            <div className="flex flex-row gap-10 flex-grow-0">
+                <Button color="primary" type="submit"><LuCheck size="20"/></Button>
+            </div>
         </form>
     )
 }
