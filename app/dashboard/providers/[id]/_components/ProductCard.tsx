@@ -8,7 +8,8 @@ export default function ProductCard({product}: {product: Product}){
             </CardHeader>
             <Divider/>
             <CardBody>
-                <p>Precio del producto<b>{product.price}</b></p>
+                <p>Nombre del producto: <b>{product.productName}</b></p>
+                <p>Precio del producto: <b>{product.price}</b></p>
             </CardBody>
         </Card>
     )
