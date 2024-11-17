@@ -5,19 +5,22 @@ import { authHeaders } from "@/helpers/authHeaders";
 import { revalidateTag } from "next/cache";
 
 export default async function UpdateEmployee(employeeId: string, formData: FormData){
-    formData.delete("$ACTION_REF_0")
-    formData.delete("$ACTION_0:1")
-    formData.delete("$ACTION_0:0")
+    const cleanData = new FormData();
+    for (const [key, value] of formData.entries()){
+        if(!key.startsWith("$")){
+            cleanData.append(key, value)
+        }
+    }
 
     const response  = await fetch(`${API_URL}/employees/${employeeId}`,{
         method:"PATCH",
         headers:{
             ...authHeaders(),
         },
-        body: formData,
+        body: cleanData,
     })
     if(response.status === 200) revalidateTag("dashboard:employees")
-    if(response.status === 200) revalidateTag(`dashboard:employees/${employeeId}`)
+    if(response.status === 200) revalidateTag(`dashboard:employees:${employeeId}`)
 
     return;
 }
