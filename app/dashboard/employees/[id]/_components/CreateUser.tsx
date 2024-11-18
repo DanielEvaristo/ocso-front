@@ -5,18 +5,21 @@ import {
   ModalBody,
   Button,
   useDisclosure,
+  Image,
 } from "@nextui-org/react";
 import { ReactNode } from "react";
 import { LuPencil, LuPlus } from "react-icons/lu";
 
-export default function CreateEmployee({ children, icon }: { children: ReactNode, icon: ReactNode }) {
+export default function CreateEmployee({ children, icon, photo }: { children: ReactNode, icon: ReactNode, photo: string | undefined}) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>
-      <Button onPress={onOpen} color="primary">
-        {icon}
-      </Button>
+      <Image src={photo} onClick={onOpen} isZoomed
+            className="object-cover"
+            classNames={{img: "size-72"}}>
+      </Image>
+      {icon}
       <Modal
         className="bg-orange-400"
         isOpen={isOpen}
