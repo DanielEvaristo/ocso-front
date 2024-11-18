@@ -7,7 +7,7 @@ export default function SelectStore({
   defaultStore,
 }: {
   stores: Location[];
-  defaultStore: number;
+  defaultStore?: number;
 }) {
   const disabledStores = stores
     .map((store: Location) => {
@@ -22,7 +22,9 @@ export default function SelectStore({
       disabledKeys={disabledStores}
     >
       {stores.map((store: Location) => (
-        <SelectItem key={String(store.locationId)}>{store.locationName}</SelectItem>
+        <SelectItem key={String(store.locationId)}>
+          {store.locationName}
+        </SelectItem>
       ))}
     </Select>
   );
