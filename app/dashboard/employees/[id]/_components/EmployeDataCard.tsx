@@ -5,6 +5,7 @@ import DeleteEmployee from "./DeleteEmployee";
 import CreateUser from "./CreateUser";
 import FormCreateUserEmployee from "./FormCreateUser";
 import { LuUser } from "react-icons/lu";
+import FormUpdateUser from "./FormUpdateUserEmployee";
 
 export default function EmployeeDataCard({employee}:{employee:Employee}){
     return(
@@ -27,13 +28,16 @@ export default function EmployeeDataCard({employee}:{employee:Employee}){
             </div>
         </div>
         <div className="h-full py-20 w-1 bg-zinc-300 mx-6"/>
-        <CreateUser icon={<LuUser size="20"></LuUser>} photo={employee?.employeePhoto}>
-            {
-                !employee.user && (
-                    <FormCreateUserEmployee employee={employee}/>
-                )
-            }
-        </CreateUser>
+
+            <CreateUser icon={<LuUser size="20"></LuUser>} photo={employee?.employeePhoto}>
+                {
+                    !employee.user ?(
+                        <FormCreateUserEmployee employee={employee}/>
+                    ) : (
+                        <FormUpdateUser user={employee.user}/>
+                    )
+                }
+            </CreateUser>
     </div>
     )
 }
