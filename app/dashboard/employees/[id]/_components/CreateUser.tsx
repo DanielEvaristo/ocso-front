@@ -10,7 +10,7 @@ import {
 import { ReactNode } from "react";
 import { LuPencil, LuPlus } from "react-icons/lu";
 
-export default function CreateEmployee({ children, icon, photo }: { children: ReactNode, icon: ReactNode, photo: string | undefined}) {
+export default function CreateEmployee({ children, photo }: { children: ReactNode, photo: string | undefined}) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -19,7 +19,6 @@ export default function CreateEmployee({ children, icon, photo }: { children: Re
             className="object-cover"
             classNames={{img: "size-72"}}>
       </Image>
-      {icon}
       <Modal
         className="bg-orange-400"
         isOpen={isOpen}

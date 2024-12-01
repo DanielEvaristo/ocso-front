@@ -10,7 +10,7 @@ export default function AuthLayout({
       <div className="place-content-center place-self-center place-items-center text-center">
         <div className="flex flex-col items-center bottom-10 relative">
           <Image
-            src={"Oxxo_Logo.svg"}
+            src={"/Oxxo_Logo.svg"}
             alt="Logo de Ocso"
             width={200}
             height={0}
